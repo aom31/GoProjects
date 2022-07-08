@@ -50,8 +50,25 @@ func createMovie(res http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(res).Encode(movie)
 
 }
-func updateMovie() {
+func updateMovie(res http.ResponseWriter, req *http.Request) {
+	//set json content type
+	res.Header().Set("Content-Type", "application/json")
 
+	//params
+	params := mux.Vars(req)
+	//loop over the movies, range
+	for index, item := range movies {
+		if item.Id == params["id"] {
+			//delete the movies with the id that you have sent
+			movies = append(movies[:index], movies[index+1:]...)
+			//add new movies - the movies that we send in the body of postman
+			var movie Movie
+			_ = json.NewDecoder(req.Body).Decode(&movie)
+			movie.Id = params["id"]
+			movies = append(movies, movie)
+			json.NewEncoder(res).Encode(movie)
+		}
+	}
 }
 func deleteMovie(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
