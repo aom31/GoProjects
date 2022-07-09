@@ -2,13 +2,14 @@ package models
 
 import (
 	"example/manageapi/config"
+
 	"github.com/jinzhu/gorm"
 )
 
 var db *gorm.DB
 
 type Book struct {
-	gorm.model
+	gorm.Model
 	Name        string ` gorm: "" json:"name" `
 	Auther      string ` json:"auther" `
 	Publication string `  json:"publication" `
