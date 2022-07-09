@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/example/manageapi/config"
+	"example/manageapi/config"
 	"github.com/jinzhu/gorm"
 )
 

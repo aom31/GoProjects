@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"./controllers"
-	"github.com/example/manageapi/controllers"
+	
+	"example/manageapi/controllers"
 	"github.com/gorilla/mux"
 )
 
